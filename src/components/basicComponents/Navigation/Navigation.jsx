@@ -15,7 +15,7 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="/signIn">Register</Nav.Link>
+                        <Nav.Link href="/signUp">Register</Nav.Link>
                         <Nav.Link href="/logIn">Log In!</Nav.Link>
 
                         <NavDropdown title="My space" id="basic-nav-dropdown">
