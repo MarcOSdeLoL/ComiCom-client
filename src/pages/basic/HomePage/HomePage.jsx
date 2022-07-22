@@ -1,13 +1,13 @@
 import './HomePage.css'
 
-import HomePageBody from '../../../components/HomePageCompo/HomePageBody'
-
 const HomePage = () => {
 
     return (
         <div>
             <h1>Soy la HomePage</h1>
-            <HomePageBody />
+            <div className='HomePageBody'>
+                <h1>Esto es el body de la HomePage</h1>
+            </div>
         </div>
     )
 }

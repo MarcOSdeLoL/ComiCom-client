@@ -1,11 +1,9 @@
 import './LogIn.css'
 import { Form, Button } from "react-bootstrap"
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import authService from '../../../services/auth.services'
 
-
-
-
+import { AuthContext } from "../../../contexts/auth.context"
 
 const LogIn = () => {
 
@@ -13,6 +11,8 @@ const LogIn = () => {
         email: '',
         password: ''
     })
+
+    const { storeToken, authenticateUser } = useContext(AuthContext)
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -31,13 +31,12 @@ const LogIn = () => {
             .catch(err => console.log(err))
     }
 
-
+    const { email, password } = loginInfo
 
     return (
         <div>
 
             <Form onSubmit={handleSubmit}>
-
 
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>

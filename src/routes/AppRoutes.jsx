@@ -5,7 +5,7 @@ import SignUp from "../pages/basic/SignUp/SignUp"
 import LogIn from "../pages/basic/LogIn/LogIn"
 import UsersList from "../pages/user/UsersList/UsersList"
 import UserDetails from "../pages/user/UserDetails/UserDetails"
-import ComicsList from "../pages/comic/ComicsList/ComicsList"
+import ComicsListPage from "../pages/comic/ComicsListPage/ComicsListPage"
 import ComicDetails from "../pages/comic/ComicDetails/ComicDetails"
 import CreateComic from "../pages/comic/CreateComic/CreateComic"
 
@@ -14,14 +14,14 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route path="/signUp" element={<SignUp />}></Route>
-            <Route path="/logIn" element={<LogIn />}></Route>
-            <Route path="/usersList" element={<UsersList />}></Route>
-            <Route path="/userDetails" element={<UserDetails />}></Route>
-            <Route path="/comicsList" element={<ComicsList />}></Route>
-            <Route path="/comicDetails" element={<ComicDetails />}></Route>
-            <Route path="/createComic " element={<CreateComic />}></Route>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/logIn" element={<LogIn />} />
+            <Route path="/usersList" element={<UsersList />} />
+            <Route path="/userDetails/:user_id" element={<UserDetails />} />
+            <Route path="/comicsList" element={<ComicsListPage />} />
+            <Route path="/comicDetails/:comic_id" element={<ComicDetails />} />
+            <Route path="/createComic" element={<CreateComic />} />
         </Routes>
     )
 }

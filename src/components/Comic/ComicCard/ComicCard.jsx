@@ -1,17 +1,27 @@
 import './ComicCard.css'
-import { Card,Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../contexts/auth.context'
 
-const ComicCard = () => {
+
+const ComicCard = ({ title, number, cover, _id, owner}) => {
+
+        const { user } = useContext(AuthContext)
 
     return (
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://1.bp.blogspot.com/-mmUHTTVDg2Y/XifcfqkA5QI/AAAAAAAALLw/jFlYZ3mp6jQBFSpNHqp0z-lW-QeiZ7ikACLcBGAsYHQ/s2346/Spider-Man-minimal.jpg" />
+        <Card className="ComicCard">
+            <Card.Img variant="top" src={cover} />
             <Card.Body>
-                <Card.Title>Comic Title</Card.Title>
+                <Card.Title>{title}{number}</Card.Title>
                 <Card.Text>
-                    Cosas de mutantes, superhéroes y cosas del palo.
+                    Mutant stuff, super-heros and so on.
                 </Card.Text>
-                <Button variant="primary" href="/comicDetails">Detalles del cómic</Button>
+                <Link to={`/comicDetails/${_id}`}>
+                    <Button variant="primary" as='span'>Comic Details</Button>
+                </Link>
+                {owner === user?._id && <Button size="sm" variant="warning" onClick={() => alert('TODAVÍA NO LO HE HECHO, GERMÁN')}>Editar</Button>}
+                {user?.role === 'ADMIN' && <Button size="sm" variant="danger" onClick={() => alert('ESTO TAMPOCO LO HE HECHO AÚN, GERMÁN')}>Eliminar</Button>}
             </Card.Body>
         </Card>
     )

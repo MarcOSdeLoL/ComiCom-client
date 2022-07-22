@@ -1,0 +1,8 @@
+.CoasterCard {
+    width: '18rem'
+}
+
+.ComicCard img {
+    height: 140px;
+    object-fit: cover;
+}

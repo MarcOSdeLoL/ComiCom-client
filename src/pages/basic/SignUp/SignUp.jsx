@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 
 import authService from '../../../services/auth.services'
 
-
 const SignUp = () => {
 
     const navigate = useNavigate()
@@ -51,7 +50,7 @@ const SignUp = () => {
 
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" value={password}  onChange={handleInputChange} name="password" />
+                    <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
                 </Form.Group>
 
                 <div className="d-grid">

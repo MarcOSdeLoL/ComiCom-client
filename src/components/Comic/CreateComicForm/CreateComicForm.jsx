@@ -1,7 +1,6 @@
 import './CreateComicForm.css'
-import { Container } from 'react-bootstrap'
 import { useState } from 'react'
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 
 import comicService from '../../../services/comic.services'
@@ -11,14 +10,12 @@ import comicService from '../../../services/comic.services'
 const CreateComicForm = () => {
 
     const navigate = useNavigate()
-    
+
     const [createComicInfo, setCreateComicInfo] = useState({
         title: '',
         number: '',
         pages: '',
-        cover: '',
-        // owner: '',
-        // forSale: false
+        cover: ''
     })
 
     const handleInputChange = (e) => {
@@ -41,8 +38,6 @@ const CreateComicForm = () => {
 
         <Container>
 
-            <h1>Create a Comic</h1>
-
             <Form onSubmit={handleSubmit} >
 
                 <Form.Group className="mb-3" controlId="title">
@@ -61,16 +56,10 @@ const CreateComicForm = () => {
                     <Form.Control type="number" value={pages} onChange={handleInputChange} name="pages" />
                 </Form.Group>
 
-{/* //////////////////////////////////////////////////////// */}
-{/* CAMPO PARA LA IMAGEN */}
-
-                {/* CON url */}
-
                 <Form.Group className="mb-3" controlId="cover">
-                <Form.Label>Image (URL)</Form.Label>
+                    <Form.Label>Image (URL)</Form.Label>
                     <Form.Control type="text" value={cover} onChange={handleInputChange} name="cover" />
-            </Form.Group>
-
+                </Form.Group>
 
                 {/* CON ARCHIVO */}
 
@@ -79,9 +68,6 @@ const CreateComicForm = () => {
                     <Form.Control type="file" onChange={handleFileInput} name="imageUrl" />
                 </Form.Group> */}
 
-                
- {/* ////////////////////////////////////////////////////////////*/}
-                
                 <div className="d-grid">
                     <Button variant="dark" type="submit">Create Comic</Button>
                 </div>
