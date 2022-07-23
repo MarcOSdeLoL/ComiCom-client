@@ -45,6 +45,10 @@ const CreateComicForm = () => {
                     <Form.Control type="text" value={title} onChange={handleInputChange} name="title" />
                 </Form.Group>
 
+                {/* <Form.Group className="mb-3" controlId="textarea">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control type="textarea" value={description} onChange={handleInputChange} name="description" />
+                </Form.Group> */}
 
                 <Form.Group className="mb-3" controlId="number">
                     <Form.Label>Number</Form.Label>

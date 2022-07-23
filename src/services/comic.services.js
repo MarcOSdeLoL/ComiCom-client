@@ -28,6 +28,10 @@ class ComicService {
     getAllComics() {
         return this.api.get('allComics')
     }
+
+    getOneComic(comic_id) {
+        return this.api.get(`/${comic_id}/details`)
+    }
 }
 
 const comicService = new ComicService()

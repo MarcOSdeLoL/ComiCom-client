@@ -1,5 +1,7 @@
 import './UserDetails.css'
 
+
+
 const UserDetails = () => {
 
     return (

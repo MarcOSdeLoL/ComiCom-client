@@ -1,60 +1,33 @@
 import './LogIn.css'
-import { Form, Button } from "react-bootstrap"
-import { useState, useContext } from 'react'
-import authService from '../../../services/auth.services'
+import  {Container, Row, Col} from 'react-bootstrap'
+import LoginForm from '../../../components/basicComponents/LoginForm/LoginForm'
 
-import { AuthContext } from "../../../contexts/auth.context"
+
 
 const LogIn = () => {
 
-    const [loginInfo, setLoginInfo] = useState({
-        email: '',
-        password: ''
-    })
-
-    const { storeToken, authenticateUser } = useContext(AuthContext)
-
-    const handleInputChange = e => {
-        const { value, name } = e.target
-        setLoginInfo({ ...loginInfo, [name]: value })
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-
-        authService
-            .login(loginInfo)
-            .then(({ data }) => {
-                storeToken(data.authToken)
-                authenticateUser()
-            })
-            .catch(err => console.log(err))
-    }
-
-    const { email, password } = loginInfo
-
+    
     return (
-        <div>
 
-            <Form onSubmit={handleSubmit}>
+        <Container>
 
-                <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
-                </Form.Group>
+            <Row>
 
-                <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-                </Form.Group>
+                <Col md={{ offset: 3, span: 6 }}>
 
-                <div className="d-grid">
-                    <Button variant="dark" type="submit">Access</Button>
-                </div>
+                    <h1>Please, LogIn!</h1>
 
-            </Form>
+                    <hr />
 
-        </div>
+                    <LoginForm />
+
+                </Col>
+            </Row>
+
+        </Container>
+
+
+       
     )
 }
 

@@ -7,14 +7,16 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/auth.context'
 
 const Navigation = () => {
-
+//ojo a este user
     const { user, logoutUser} = useContext(AuthContext)
 
     const logout = () => { logoutUser() }
 
     return (
 
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" 
+        // fixed="top"
+        >
             <Container>
                 <Link to="/">
                 <Navbar.Brand as="span">ComiCom</Navbar.Brand>
@@ -33,7 +35,7 @@ const Navigation = () => {
                             <Link to="/usersList">
                             <NavDropdown.Item as="span">List of ComiCommies</NavDropdown.Item>
                             </Link>
-                            <Link to="/userDetails/:user_id">
+                            <Link to="/userDetails/${user._id}">
                             <NavDropdown.Item as="span">User´s Details</NavDropdown.Item>
                             </Link>
                             <NavDropdown.Divider />
