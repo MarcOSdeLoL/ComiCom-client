@@ -13,7 +13,7 @@ const ComicCard = ({ title, number, cover, _id, owner}) => {
         <Card className="ComicCard">
             <Card.Img variant="top" src={cover} />
             <Card.Body>
-                <Card.Title>{title}{number}</Card.Title>
+                <Card.Title>{title} {number}</Card.Title>
                 <Card.Text>
                     Mutant stuff, super-heros and so on.
                 </Card.Text>

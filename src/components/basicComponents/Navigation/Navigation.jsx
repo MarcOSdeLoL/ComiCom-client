@@ -1,12 +1,16 @@
 import './Navigation.css'
 
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap'
+
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from '../../../contexts/auth.context'
 
 const Navigation = () => {
+
+    const { user, logoutUser} = useContext(AuthContext)
+
+    const logout = () => { logoutUser() }
 
     return (
 
@@ -32,11 +36,12 @@ const Navigation = () => {
                             <Link to="/userDetails/:user_id">
                             <NavDropdown.Item as="span">User´s Details</NavDropdown.Item>
                             </Link>
-                            {/* <NavDropdown.Divider />
-                            <NavDropdown.Item href="/logOut">
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item as="span" onClick={logout}>
                                 Sayonara, Baby!
-                            </NavDropdown.Item> */}
+                            </NavDropdown.Item>
                         </NavDropdown>
+                        
                         <NavDropdown title="Comics" id="basic-nav-dropdown">
                             <Link to="/comicsList">
                             <NavDropdown.Item as="span">All the comics!</NavDropdown.Item>
