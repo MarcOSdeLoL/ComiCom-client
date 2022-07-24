@@ -32,6 +32,10 @@ class ComicService {
     getOneComic(comic_id) {
         return this.api.get(`/${comic_id}/details`)
     }
+
+    editComic(comic_id, comicData) {
+        return this.api.put(`/${comic_id}/edit`, comicData)
+    }
 }
 
 const comicService = new ComicService()

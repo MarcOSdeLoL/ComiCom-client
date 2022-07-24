@@ -8,8 +8,7 @@ import UserDetails from "../pages/user/UserDetails/UserDetails"
 import ComicsListPage from "../pages/comic/ComicsListPage/ComicsListPage"
 import ComicDetails from "../pages/comic/ComicDetails/ComicDetails"
 import CreateComic from "../pages/comic/CreateComic/CreateComic"
-
-
+import EditComicPage from "../pages/comic/ComicEditPage/ComicEditPage"
 const AppRoutes = () => {
 
     return (
@@ -22,6 +21,8 @@ const AppRoutes = () => {
             <Route path="/comicsList" element={<ComicsListPage />} />
             <Route path="/comicDetails/:comic_id" element={<ComicDetails />} />
             <Route path="/createComic" element={<CreateComic />} />
+            <Route path="/editComic/:comic_id" element={<EditComicPage />} />
+
         </Routes>
     )
 }

@@ -5,9 +5,9 @@ import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/auth.context'
 
 
-const ComicCard = ({ title, number, cover, _id, owner}) => {
+const ComicCard = ({ title, number, cover, _id, owner }) => {
 
-        const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     return (
         <Card className="ComicCard">
@@ -20,7 +20,12 @@ const ComicCard = ({ title, number, cover, _id, owner}) => {
                 <Link to={`/comicDetails/${_id}`}>
                     <Button variant="primary" as='span'>Comic Details</Button>
                 </Link>
-                {owner === user?._id && <Button size="sm" variant="warning" onClick={() => alert('TODAVÍA NO LO HE HECHO, GERMÁN')}>Editar</Button>}
+                {owner === user?._id &&
+                
+                    <Link to={`/editComic/${_id}`}>
+                        <Button size="sm" variant="warning" as='span'>Editar</Button>
+                    </Link>
+                }
                 {user?.role === 'ADMIN' && <Button size="sm" variant="danger" onClick={() => alert('ESTO TAMPOCO LO HE HECHO AÚN, GERMÁN')}>Eliminar</Button>}
             </Card.Body>
         </Card>

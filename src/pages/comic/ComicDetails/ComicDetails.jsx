@@ -18,7 +18,6 @@ const ComicDetails = () => {
             .getOneComic(comic_id)
             .then(({ data }) => {
                 setComic(data)
-                console.log(data, 'desde useefect')
             })
             .catch(err => console.error(err))
     }, [])
@@ -28,30 +27,25 @@ const ComicDetails = () => {
         <div>
 
             {
-                // !comic ? 
-                // <LoadingButton/> :
+                !comic ? 
+                <LoadingButton/> :
                 <>
-                <Card className="bg-dark text-white">
-                    <Card.Img src="https://www.zoom-comics.com/wp-content/uploads/sites/36/2013/02/spider-man-eyes.jpg" alt="Card image" />
+                        <Card className="bg-dark text-white 18rem">
+                    <Card.Img src={comic.cover} alt="Card image"/>
                     <Card.ImgOverlay>
                 
-                                <Card.Title> <h1>{comic.title}</h1>ESTE ES EL TÍTULO DE LA VAINA</Card.Title>
+                                <Card.Title> <h1>{comic.title}{comic.number}</h1></Card.Title>
                         <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in
-                            to additional content. This content is a little bit longer.
+                            {comic.pages} pages
                         </Card.Text>
-                        <Card.Text>Last updated 3 mins ago</Card.Text>
+                            
+                        <Card.Text>Add year here</Card.Text>
                     </Card.ImgOverlay>
                 </Card>
                 </>
             }
 
         </div>
-
-
-
-
-
     )
 }
 
