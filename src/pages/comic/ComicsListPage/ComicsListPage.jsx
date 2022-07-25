@@ -30,7 +30,7 @@ const ComicsListPage = () => {
 
         <Container>
 
-            <h1>Here you are all the comics!</h1>
+            <h1>All the comics!</h1>
             <br />
             {
                 comics.length ? <ComicList comics={comics} callComics={callComics} /> : <LoadingButton />

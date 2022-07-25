@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/auth.context'
 import comicService from '../../../services/comic.services'
+import userService from '../../../services/user.services'
+
 
 
 const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
@@ -23,6 +25,15 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
             .catch(err => console.error(err))
     }
 
+    const handleAddFavs = () => {
+
+        userService
+            .addFavs(_id)
+            .then(()=> navigate('/comicsList'))
+            .catch(err => console.error(err))
+
+    }
+
     return (
 
         <Card className="ComicCard">
@@ -36,6 +47,11 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
                     <Button variant="primary" as='span'>Comic Details</Button>
                 </Link>
 
+                {owner !== user?._id &&
+
+                    <Button size="sm" variant="success" onClick={handleAddFavs}>Add to Favs!</Button>
+                }
+
                 {owner === user?._id &&
 
                     <Link to={`/editComic/${_id}`}>
@@ -45,12 +61,9 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
                 {user?.role === 'ADMIN' &&
 
-                    <Button size="sm" variant="danger"
-                        onClick={handleDelete}
-                    >Delete</Button>
-
-
+                    <Button size="sm" variant="danger" onClick={handleDelete}>Delete</Button>
                 }
+
             </Card.Body>
         </Card>
     )
