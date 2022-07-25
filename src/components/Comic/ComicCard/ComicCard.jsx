@@ -1,15 +1,30 @@
 import './ComicCard.css'
 import { Card, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../../contexts/auth.context'
+import comicService from '../../../services/comic.services'
 
 
-const ComicCard = ({ title, number, cover, _id, owner }) => {
+const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
     const { user } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+
+    const handleDelete = e => {
+
+        comicService
+            .deleteComic(_id)
+            .then(() => {
+                callComics()
+                navigate('/comicsList')
+            })
+            .catch(err => console.error(err))
+    }
+
     return (
+
         <Card className="ComicCard">
             <Card.Img variant="top" src={cover} />
             <Card.Body>
@@ -22,18 +37,19 @@ const ComicCard = ({ title, number, cover, _id, owner }) => {
                 </Link>
 
                 {owner === user?._id &&
-                
+
                     <Link to={`/editComic/${_id}`}>
                         <Button size="sm" variant="warning" as='span'>Edit</Button>
                     </Link>
                 }
 
-                {user?.role === 'ADMIN' && 
+                {user?.role === 'ADMIN' &&
 
-                    <Link to={`/deleteComic/${_id}`}>                    
-                    <Button size="sm" variant="danger" as='span'>Delete</Button>
-                    </Link>
-                
+                    <Button size="sm" variant="danger"
+                        onClick={handleDelete}
+                    >Delete</Button>
+
+
                 }
             </Card.Body>
         </Card>

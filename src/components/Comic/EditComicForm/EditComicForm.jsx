@@ -38,7 +38,7 @@ const EditComicForm = () => {
          
          comicService
              .editComic(comic_id, comicData)
-             .then(() => navigate('/allComics'))
+             .then(() => navigate('/comicList'))
              .catch(err => console.error(err))
      }
 

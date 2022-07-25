@@ -29,7 +29,7 @@ const CreateComicForm = () => {
 
         comicService
             .createComic(createComicInfo)
-            .then(({ data }) => navigate('/'))
+            .then(({ data }) => navigate('/comicsList'))
             .catch(err => console.log(err))
     }
 
