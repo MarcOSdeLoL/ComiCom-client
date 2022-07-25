@@ -20,13 +20,21 @@ const ComicCard = ({ title, number, cover, _id, owner }) => {
                 <Link to={`/comicDetails/${_id}`}>
                     <Button variant="primary" as='span'>Comic Details</Button>
                 </Link>
+
                 {owner === user?._id &&
                 
                     <Link to={`/editComic/${_id}`}>
-                        <Button size="sm" variant="warning" as='span'>Editar</Button>
+                        <Button size="sm" variant="warning" as='span'>Edit</Button>
                     </Link>
                 }
-                {user?.role === 'ADMIN' && <Button size="sm" variant="danger" onClick={() => alert('ESTO TAMPOCO LO HE HECHO AÚN, GERMÁN')}>Eliminar</Button>}
+
+                {user?.role === 'ADMIN' && 
+
+                    <Link to={`/deleteComic/${_id}`}>                    
+                    <Button size="sm" variant="danger" as='span'>Delete</Button>
+                    </Link>
+                
+                }
             </Card.Body>
         </Card>
     )

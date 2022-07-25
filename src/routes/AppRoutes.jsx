@@ -9,6 +9,7 @@ import ComicsListPage from "../pages/comic/ComicsListPage/ComicsListPage"
 import ComicDetails from "../pages/comic/ComicDetails/ComicDetails"
 import CreateComic from "../pages/comic/CreateComic/CreateComic"
 import EditComicPage from "../pages/comic/ComicEditPage/ComicEditPage"
+
 const AppRoutes = () => {
 
     return (
