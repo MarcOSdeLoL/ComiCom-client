@@ -8,7 +8,7 @@ import userService from '../../../services/user.services'
 
 
 
-const ComicCard = ({ title, number, cover, _id, owner, callComics, forSale }) => {
+const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics, forSale }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -41,6 +41,7 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, forSale }) =>
         comicService
             .setAsAvailableComic(_id)
             .then(({ data }) => {
+                callMyComics()
                 console.log('AHORA ESTA DISPONIBLE:', data)
                 navigate('/myComics')
             })
@@ -51,7 +52,11 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, forSale }) =>
 
         comicService
             .setAsUnavailableComic(_id)
-            .then(({ data }) => console.log('AHORA NO ESTA DISPONIBLE:', data))
+            .then(({ data }) => {
+                callMyComics()
+                console.log('AHORA NO ESTA DISPONIBLE:', data)
+                navigate('/myComics')
+            })
             .catch(err => console.log(err))
     }
 
@@ -72,7 +77,7 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, forSale }) =>
 
                     <Button size="sm" variant="success" onClick={handleAddFavs}>Add to Favs!</Button>
                 }
-                
+
                 {owner === user?._id &&
                     <>
                         <Link to={`/editComic/${_id}`}>
