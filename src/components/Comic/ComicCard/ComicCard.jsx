@@ -14,7 +14,7 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
     const navigate = useNavigate()
 
-    const handleDelete = e => {
+    const handleDelete = () => {
 
         comicService
             .deleteComic(_id)
@@ -29,7 +29,10 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
         userService
             .addFavs(_id)
-            .then(()=> navigate('/comicsList'))
+            .then(()=> {
+                callComics()
+                navigate('/comicsList')
+            })
             .catch(err => console.error(err))
 
     }

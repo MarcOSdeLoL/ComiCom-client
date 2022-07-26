@@ -1,6 +1,8 @@
-.HomePageBody {
-    background-image: url("https: //1.bp.blogspot.com/-mmUHTTVDg2Y/XifcfqkA5QI/AAAAAAAALLw/jFlYZ3mp6jQBFSpNHqp0z-lW-QeiZ7ikACLcBGAsYHQ/s2346/Spider-Man-minimal.jpg");
-    background-color: rgb(60, 84, 244);
-    height: 500px;
-    width: 500px;
+.HomePage {
+       background-color: rgb(60, 84, 244);
+    height: 1500px;
+    width: 1500px;
+}
+.HomePage img {
+    border-radius: 8px;
 }

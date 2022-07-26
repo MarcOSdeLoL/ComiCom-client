@@ -41,7 +41,14 @@ class ComicService {
         return this.api.delete(`/${comic_id}/delete`)
     }
 
-    
+    setAsAvailableComic(comic_id, comicData) {
+        return this.api.put(`/${comic_id}/setAvailable`, comicData)
+    }
+
+    setNewComicOwner(comic_id, comicData) {
+        return this.api.put(`/${comic_id}/adopt`, comicData)
+        // modificar el owner + forSale: false
+    }
 }
 
 const comicService = new ComicService()

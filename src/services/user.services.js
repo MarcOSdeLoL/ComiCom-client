@@ -25,6 +25,10 @@ class UserService {
         return this.api.put(`/${comic_id}/favComics`)
     }
 
+    getAllUsers() {
+        return this.api.get('/allUsers')
+    }
+
 }
 
 const userService = new UserService()

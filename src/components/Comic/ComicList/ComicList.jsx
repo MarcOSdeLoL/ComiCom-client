@@ -1,6 +1,6 @@
+import './ComicList.css'
 import { Row, Col } from 'react-bootstrap'
 import ComicCard from '../ComicCard/ComicCard'
-import './ComicList.css'
 
 const ComicList = ({ comics, callComics }) => {
 
