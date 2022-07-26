@@ -53,8 +53,8 @@ class ComicService {
         return this.api.put(`/${comic_id}/setUnavailable`)
     }
 
-    setNewComicOwner(comic_id, comicData) {
-        return this.api.put(`/${comic_id}/adopt`, comicData)
+    setNewComicOwner(comic_id) {
+        return this.api.put(`/${comic_id}/adopt`)
         // modificar el owner + forSale: false
     }
 }

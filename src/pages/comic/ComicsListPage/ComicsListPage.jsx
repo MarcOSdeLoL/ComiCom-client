@@ -18,6 +18,7 @@ const ComicsListPage = () => {
     }, [])
 
     const callComics = () => {
+        
         comicService
             .getAllComics()
             .then(({ data }) => {

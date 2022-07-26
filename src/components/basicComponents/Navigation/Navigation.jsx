@@ -41,6 +41,9 @@ const Navigation = () => {
                             <Link to="/myComics">
                                 <NavDropdown.Item as="span">My Comics</NavDropdown.Item>
                             </Link>
+                            <Link to="/mySpace">
+                                <NavDropdown.Item as="span">My Space</NavDropdown.Item>
+                            </Link>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as="span" onClick={logout}>
                                 Sayonara, Baby!
