@@ -21,6 +21,10 @@ class UserService {
 
     }
 
+    getFavs() {
+        return this.api.get(`/my-favComics`)
+    }
+
     addFavs(comic_id) {
         return this.api.put(`/${comic_id}/favComics`)
     }

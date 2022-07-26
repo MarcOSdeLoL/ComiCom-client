@@ -6,9 +6,9 @@ const ComicEditPage = () => {
     return (
         <div>
             <h1>
-                Esta es la web de Edición de Cómic
-                <EditComicForm />
+                Update your comic here:
             </h1>
+                <EditComicForm />
         </div>
     )
 }

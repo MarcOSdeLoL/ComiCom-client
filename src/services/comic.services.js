@@ -29,6 +29,10 @@ class ComicService {
         return this.api.get('/allComics')
     }
 
+    getMyComics() {
+        return this.api.get('/my-comics')
+    }
+
     getOneComic(comic_id) {
         return this.api.get(`/${comic_id}/details`)
     }
@@ -41,8 +45,12 @@ class ComicService {
         return this.api.delete(`/${comic_id}/delete`)
     }
 
-    setAsAvailableComic(comic_id, comicData) {
-        return this.api.put(`/${comic_id}/setAvailable`, comicData)
+    setAsAvailableComic(comic_id) {
+        return this.api.put(`/${comic_id}/setAvailable`)
+    }
+
+    setAsUnavailableComic(comic_id) {
+        return this.api.put(`/${comic_id}/setUnavailable`)
     }
 
     setNewComicOwner(comic_id, comicData) {

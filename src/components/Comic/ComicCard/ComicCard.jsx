@@ -8,7 +8,7 @@ import userService from '../../../services/user.services'
 
 
 
-const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
+const ComicCard = ({ title, number, cover, _id, owner, callComics, forSale }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -29,12 +29,30 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
         userService
             .addFavs(_id)
-            .then(()=> {
+            .then(() => {
                 callComics()
                 navigate('/comicsList')
             })
             .catch(err => console.error(err))
+    }
 
+    const handleAvailabilityOn = () => {
+
+        comicService
+            .setAsAvailableComic(_id)
+            .then(({ data }) => {
+                console.log('AHORA ESTA DISPONIBLE:', data)
+                navigate('/myComics')
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleAvailabilityOff = () => {
+
+        comicService
+            .setAsUnavailableComic(_id)
+            .then(({ data }) => console.log('AHORA NO ESTA DISPONIBLE:', data))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -54,12 +72,15 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics }) => {
 
                     <Button size="sm" variant="success" onClick={handleAddFavs}>Add to Favs!</Button>
                 }
-
+                
                 {owner === user?._id &&
-
-                    <Link to={`/editComic/${_id}`}>
-                        <Button size="sm" variant="warning" as='span'>Edit</Button>
-                    </Link>
+                    <>
+                        <Link to={`/editComic/${_id}`}>
+                            <Button size="sm" variant="warning" as='span'>Edit</Button>
+                        </Link>
+                        <Button size="sm" variant="info" as='span' onClick={handleAvailabilityOn} className={(forSale) ? 'hide' : ''}>Set adoptable</Button>
+                        <Button size="sm" variant="secondary" as='span' onClick={handleAvailabilityOff} className={(forSale) ? '' : 'hide'}>Not anymore</Button>
+                    </>
                 }
 
                 {user?.role === 'ADMIN' &&

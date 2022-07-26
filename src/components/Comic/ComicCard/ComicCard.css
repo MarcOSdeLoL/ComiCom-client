@@ -6,3 +6,7 @@
     height: 140px;
     object-fit: cover;
 }
+
+.hide {
+    display: none
+}

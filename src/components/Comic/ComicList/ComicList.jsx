@@ -4,6 +4,9 @@ import ComicCard from '../ComicCard/ComicCard'
 
 const ComicList = ({ comics, callComics }) => {
 
+    console.log('&&&&&&&&', comics)
+
+
     return (
 
         <Row>
