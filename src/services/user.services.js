@@ -29,8 +29,16 @@ class UserService {
         return this.api.put(`/${comic_id}/favComics`)
     }
 
+    removeFavs(comic_id){
+        return this.api.put(`/${comic_id}/RemoveFavComic`)
+    }
+
     getAllUsers() {
         return this.api.get('/allUsers')
+    }
+
+    getOneUser(user_id){
+        return this.api.get(`/${user_id}/details`)
     }
 
 }

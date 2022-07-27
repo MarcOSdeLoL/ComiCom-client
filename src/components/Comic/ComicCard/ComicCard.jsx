@@ -1,7 +1,7 @@
 import './ComicCard.css'
 import { Card, Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../../../contexts/auth.context'
 import comicService from '../../../services/comic.services'
 import userService from '../../../services/user.services'
@@ -11,8 +11,30 @@ import userService from '../../../services/user.services'
 const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics, forSale }) => {
 
     const { user } = useContext(AuthContext)
-
     const navigate = useNavigate()
+
+    const [isFav, setIsFav] = useState(false)
+
+
+    useEffect(() => {
+        checkFavs()
+    }, [isFav])
+
+    const checkFavs = () => {
+
+        userService
+            .getOneUser(user._id)
+            .then(({ data }) => {
+                setIsFav(false)
+                data.favComics.map(fav => {
+                    if (fav._id === _id) {
+                        setIsFav(true)
+                        callComics()
+                    } 
+                })
+            })
+            .catch(err => console.error(err))
+    }
 
     const handleDelete = () => {
 
@@ -20,7 +42,6 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics,
             .deleteComic(_id)
             .then(() => {
                 callComics()
-                navigate('/comicsList')
             })
             .catch(err => console.error(err))
     }
@@ -30,10 +51,24 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics,
         userService
             .addFavs(_id)
             .then(() => {
-                callComics()
-                navigate('/comicsList')
+                callMyComics && callMyComics()
+                callComics && callComics()
+                checkFavs()
             })
             .catch(err => console.error(err))
+    }
+
+    const handleRemoveFavs = () => {
+
+        userService
+            .removeFavs(_id)
+            .then(() => {
+                callMyComics && callMyComics()
+                callComics && callComics()
+                checkFavs()
+            })
+            .catch(err => console.error(err))
+        
     }
 
     const handleAvailabilityOn = () => {
@@ -43,22 +78,17 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics,
             .then(({ data }) => {
                 callMyComics && callMyComics()
                 callComics && callComics()
-                console.log('AHORA ESTA DISPONIBLE:', data)
-                navigate('/myComics')
             })
             .catch(err => console.log(err))
     }
 
     const handleAvailabilityOff = () => {
 
-
         comicService
             .setAsUnavailableComic(_id)
             .then(({ data }) => {
                 callMyComics && callMyComics()
                 callComics && callComics()
-                console.log('AHORA NO ESTA DISPONIBLE:', data)
-                navigate('/myComics')
             })
             .catch(err => console.log(err))
     }
@@ -73,7 +103,6 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics,
                 navigate('/comicsList')
             })
             .catch(err => console.log(err))
-
     }
 
     return (
@@ -90,7 +119,11 @@ const ComicCard = ({ title, number, cover, _id, owner, callComics, callMyComics,
                 </Link>
 
                 {owner !== user?._id &&
-                    <Button size="sm" variant="success" onClick={handleAddFavs}>Add to Favs!</Button>
+                    <>
+                        <Button size="sm" variant="success" onClick={handleAddFavs} className={(isFav) ? 'hide' : ''}>Add to Favs</Button>
+                        <Button size="sm" variant="success" onClick={handleRemoveFavs} className={(isFav) ? '' : 'hide'}>Remove from Favs </Button>
+
+                    </>
                 }
 
                 {owner === user?._id &&
