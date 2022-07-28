@@ -4,7 +4,6 @@ import UserCard from '../../Comic/ComicCard/ComicCard'
 import {Col, Row} from 'react-bootstrap'
 
 const UserList = (users) => {
-//AQUÍ FALTARÍA CALLUSERS REF COMICS CARD
     return (
 
         <Row>

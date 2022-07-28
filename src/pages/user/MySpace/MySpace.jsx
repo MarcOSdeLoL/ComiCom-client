@@ -1,5 +1,6 @@
 import './MySpace'
 import UserFavs from '../../../components/User/UserFavs/UserFavs'
+import UserDetails from '../../../components/User/UserDetails/UserDetails'
 
 const MySpace =() => {
     return (
@@ -9,6 +10,7 @@ const MySpace =() => {
         <h2>Imagen del usuario</h2>
         <hr />
         <h2>Detalles de usuario</h2>
+        <UserDetails/>
         <br />
         <h3>mis comics</h3>
         <br />
