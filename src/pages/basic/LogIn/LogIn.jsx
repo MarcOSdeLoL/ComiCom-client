@@ -9,7 +9,7 @@ const LogIn = () => {
     
     return (
 
-        <Container>
+        <Container className='fondo'>
 
             <Row>
 

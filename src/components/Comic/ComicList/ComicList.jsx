@@ -11,7 +11,7 @@ const ComicList = ({ comics, callComics, callMyComics }) => {
 
                 // WHAT DA HELL IS THIS KEY?
                 return (
-                    <Col md={3} key={comic._id} >
+                    <Col className="Col"md={3} key={comic._id} >
                         <ComicCard {...comic} callComics={callComics} callMyComics={callMyComics} />
                     </Col>
                 )

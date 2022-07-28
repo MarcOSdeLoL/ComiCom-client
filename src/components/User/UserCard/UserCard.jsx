@@ -17,11 +17,11 @@ const UserCard = ({ username, email, _id, avatar, description, favComics }) => {
                 <Card.Text>
                     Email: {email}
                 </Card.Text>
-                <Card.Text>
+                {/* <Card.Text>
                     My favourite comics:
                     <br />
                     {favComics}
-                </Card.Text>
+                </Card.Text> */}
                 <Link to={`/usersDetails/${_id}`}>
                     <Button variant="light" as='span'>User details</Button>
                 </Link>
