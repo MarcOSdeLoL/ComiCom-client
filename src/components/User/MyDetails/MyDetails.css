@@ -1,0 +1,25 @@
+.userDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+.profilePicture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+
+    background-size: cover;
+    background-position: center;
+}
+
+.userDetails-header {
+    display: flex;
+    align-items: center;
+}
+
+.userDetails-header svg {
+    margin-left: 20px
+}

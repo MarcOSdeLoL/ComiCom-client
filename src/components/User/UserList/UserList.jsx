@@ -1,9 +1,12 @@
 import './UserList.css'
 
-import UserCard from '../../Comic/ComicCard/ComicCard'
-import {Col, Row} from 'react-bootstrap'
+import UserCard from '../UserCard/UserCard'
+import { Col, Row } from 'react-bootstrap'
 
-const UserList = (users) => {
+const UserList = ({ loadUsers, users }) => {
+
+    console.log(users)
+
     return (
 
         <Row>
@@ -13,9 +16,7 @@ const UserList = (users) => {
                 return (
 
                     <Col md={3} key={user._id} >
-                        <UserCard {...user} 
-                        // callComics={callComics}
-                        />
+                        <UserCard {...user} />
                     </Col>
                 )
             })}

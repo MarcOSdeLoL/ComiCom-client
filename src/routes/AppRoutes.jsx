@@ -10,6 +10,8 @@ import CreateComic from "../pages/comic/CreateComic/CreateComic"
 import EditComicPage from "../pages/comic/ComicEditPage/ComicEditPage"
 import MyComicListPage from "../pages/user/MyComicsListPage/MyComicListPage"
 import MySpace from "../pages/user/MySpace/MySpace"
+import UserDetails from "../pages/user/UserDetails/UserDetails"
+
 
 const AppRoutes = () => {
 
@@ -19,6 +21,7 @@ const AppRoutes = () => {
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/logIn" element={<LogIn />} />
             <Route path="/usersList" element={<UsersListPage />} />
+            <Route path="/usersDetails/:user_id" element={<UserDetails />} />
             <Route path="/comicsList" element={<ComicsListPage />} />
             <Route path="/comicDetails/:comic_id" element={<ComicDetails />} />
             <Route path="/createComic" element={<CreateComic />} />

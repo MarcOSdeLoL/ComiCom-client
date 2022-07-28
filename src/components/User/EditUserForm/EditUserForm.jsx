@@ -1,15 +1,17 @@
-import './EditUserForm'
+import './EditUserForm.css'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useParams, useNavigate } from "react-router-dom"
 import { Form, Button, Row, Col, Container } from 'react-bootstrap'
 import userService from '../../../services/user.services'
+import { AuthContext } from '../../../contexts/auth.context'
 
-const EditUserForm = () => {
 
-    // const { user_id } = useParams()
+const EditUserForm = ({ fireFinalActions }) => {
 
     const navigate = useNavigate()
+    const { user } = useContext(AuthContext)
+
 
     const [userData, setUserData] = useState({
 
@@ -26,7 +28,7 @@ const EditUserForm = () => {
 
     const handleChange = e => {
         const { value, name } = e.target
-        setUserData({ ...UserData, [name]: value })
+        setUserData({ ...userData, [name]: value })
     }
 
     const handleSubmit = e => {
@@ -34,21 +36,25 @@ const EditUserForm = () => {
         e.preventDefault()
 
         userService
-            .editUser(user_id, userData)
-            .then(() => navigate('/mySpace'))
+            .editUser(user._id, userData)
+            .then(() => {
+                console.log('estoy aqui')
+                fireFinalActions()
+                navigate('/mySpace')
+            })
             .catch(err => console.error(err))
     }
 
     useEffect(() => {
         userService
-            .getOneUser(user_id)
+            .getOneUser(user._id)
             .then(({ data }) => {
                 setUserData({
                     username: data.username,
                     email: data.email,
                     avatar: data.avatar,
                     description: data.description
-                                    })
+                })
             })
             .catch(err => console.log(err))
     }, [])

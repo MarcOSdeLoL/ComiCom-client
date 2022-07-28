@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 
 const MyComicListPage = () => {
 
-    const [myComics, setMyComics] = useState([])
+    const [myComics, setMyComics] = useState(null)
 
     useEffect(() => {
         callMyComics()
@@ -30,7 +30,11 @@ const MyComicListPage = () => {
 
             <h1>My comics!</h1>
             <br />
-            {myComics.length ? <ComicList comics={myComics} callMyComics={callMyComics} /> : <LoadingButton />}
+            {myComics
+                ?
+                (myComics.length ? <ComicList comics={myComics} callMyComics={callMyComics} /> : <h3>No hay comics</h3>)
+                :
+                <LoadingButton />}
 
         </Container>
 

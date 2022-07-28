@@ -29,7 +29,7 @@ class UserService {
         return this.api.put(`/${comic_id}/favComics`)
     }
 
-    removeFavs(comic_id){
+    removeFavs(comic_id) {
         return this.api.put(`/${comic_id}/RemoveFavComic`)
     }
 
@@ -37,8 +37,12 @@ class UserService {
         return this.api.get('/allUsers')
     }
 
-    getOneUser(user_id){
+    getOneUser(user_id) {
         return this.api.get(`/${user_id}/details`)
+    }
+
+    editUser(user_id, userData) {
+        return this.api.put(`/edit/${user_id}`, userData)
     }
 
 }

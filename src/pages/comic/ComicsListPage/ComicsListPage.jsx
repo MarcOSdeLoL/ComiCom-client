@@ -11,14 +11,14 @@ import { useState, useEffect } from 'react'
 
 const ComicsListPage = () => {
 
-    const [comics, setComics] = useState([])
+    const [comics, setComics] = useState(null)
 
     useEffect(() => {
         callComics()
     }, [])
 
     const callComics = () => {
-        
+
         comicService
             .getAllComics()
             .then(({ data }) => {
@@ -33,8 +33,11 @@ const ComicsListPage = () => {
 
             <h1>All the comics!</h1>
             <br />
-            {
-                comics.length ? <ComicList comics={comics} callComics={callComics} /> : <LoadingButton />
+            {comics
+                ?
+                (comics.length ? <ComicList comics={comics} callComics={callComics} /> : <h6>No hay comics</h6>)
+                :
+                <LoadingButton />
             }
 
         </Container>

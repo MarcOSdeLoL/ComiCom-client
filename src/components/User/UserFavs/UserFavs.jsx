@@ -9,7 +9,7 @@ import { Container } from 'react-bootstrap'
 
 const UserFavs = () => {
 
-    const [myFavs, setMyFavs] = useState([])
+    const [myFavs, setMyFavs] = useState(null)
 
     useEffect(() => {
         loadMyFavs()
@@ -19,17 +19,17 @@ const UserFavs = () => {
 
         userService
             .getFavs()
-            .then(({ data }) => {
-                setMyFavs(data)
-            })
+            .then(({ data }) => setMyFavs(data))
             .catch(err => console.error(err))
     }
 
     return (
         <Container>
-            {
-                myFavs.length ? <FavList myFavs={myFavs} loadMyFavs={loadMyFavs} /> : <LoadingButton />
-            }
+            {myFavs
+                ?
+                (myFavs?.length ? <FavList myFavs={myFavs} loadMyFavs={loadMyFavs} /> : <h3>So saaaaaad </h3>)
+                :
+                <LoadingButton />}
         </Container>
     )
 }

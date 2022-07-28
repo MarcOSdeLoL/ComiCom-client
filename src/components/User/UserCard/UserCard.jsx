@@ -1,8 +1,9 @@
-import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router-dom'
+import { Button, Card } from 'react-bootstrap'
+
 
 
 const UserCard = ({ username, email, _id, avatar, description, favComics }) => {
-
 
     return (
 
