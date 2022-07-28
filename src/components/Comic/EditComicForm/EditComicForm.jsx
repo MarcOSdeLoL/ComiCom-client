@@ -22,9 +22,7 @@ const EditComicForm = () => {
     })
 
 
-    const { title, number, pages, cover,
-        // forSale
-     } = comicData
+    const { title, number, pages, cover } = comicData
 
 
     const handleChange = e => {
@@ -50,9 +48,7 @@ const EditComicForm = () => {
                      title: data.title,
                      number: data.number,
                      pages: data.pages,
-                     cover: data.cover
-                    //  ,
-                    //  forSale: data.forSale
+                     cover: data.cover                    
                  })
              })
              .catch(err => console.log(err))
@@ -89,11 +85,7 @@ const EditComicForm = () => {
                                 </Form.Group>
                             </Col>
                         </Row>
-                        {/* TO HANDLE FOR SALE KEY
-                            <Form.Group className="mb-3" controlId="forSale">
-                                <Form.Check type="checkbox" label="Check me out" />
-                            </Form.Group> */}
-                        {/*                          <Form.Group className="mb-3" controlId="description">
+                       {/*                          <Form.Group className="mb-3" controlId="description">
                              <Form.Label>Description</Form.Label>
                              <Form.Control as="textarea" type="text" value={description} onChange={handleChange} name="description" />
                          </Form.Group> */}

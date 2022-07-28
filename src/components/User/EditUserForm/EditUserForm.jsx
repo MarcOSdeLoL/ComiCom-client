@@ -1,7 +1,7 @@
 import './EditUserForm.css'
 
 import { useState, useEffect, useContext } from 'react'
-import { useParams, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { Form, Button, Row, Col, Container } from 'react-bootstrap'
 import userService from '../../../services/user.services'
 import { AuthContext } from '../../../contexts/auth.context'
@@ -10,6 +10,7 @@ import { AuthContext } from '../../../contexts/auth.context'
 const EditUserForm = ({ fireFinalActions }) => {
 
     const navigate = useNavigate()
+    
     const { user } = useContext(AuthContext)
 
 

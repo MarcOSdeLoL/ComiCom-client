@@ -1,0 +1,8 @@
+.UserCard {
+    width: '18rem'
+}
+
+.UserCard img {
+    height: 140px;
+    object-fit: cover;
+}

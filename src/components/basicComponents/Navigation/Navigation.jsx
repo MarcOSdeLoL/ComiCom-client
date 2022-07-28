@@ -14,8 +14,7 @@ const Navigation = () => {
 
     return (
 
-        <Navbar bg="light" expand="lg"
-        // fixed="top"
+        <Navbar bg="light" expand="lg" fixed="top"
         >
             <Container>
                 <Link to="/">
@@ -36,10 +35,8 @@ const Navigation = () => {
                                 </Link>
                             </>}
 
-                        <NavDropdown title="My space" id="basic-nav-dropdown">
-                            <Link to="/usersList">
-                                <NavDropdown.Item as="span">List of ComiCommies</NavDropdown.Item>
-                            </Link>
+                        <NavDropdown title="My Space" id="basic-nav-dropdown">
+                            
                             <Link to="/myComics">
                                 <NavDropdown.Item as="span">My Comics</NavDropdown.Item>
                             </Link>
@@ -52,7 +49,10 @@ const Navigation = () => {
                             </NavDropdown.Item>
                         </NavDropdown>
 
-                        <NavDropdown title="Comics" id="basic-nav-dropdown">
+                        <NavDropdown title="The Comic-unity" id="basic-nav-dropdown">
+                            <Link to="/usersList">
+                                <NavDropdown.Item as="span">List of ComiCommies</NavDropdown.Item>
+                            </Link>
                             <Link to="/comicsList">
                                 <NavDropdown.Item as="span">All the comics!</NavDropdown.Item>
                             </Link>

@@ -1,8 +1,6 @@
-.HomePage {
-       background-color: rgb(60, 84, 244);
-    height: 1500px;
-    width: 1500px;
-}
-.HomePage img {
-    border-radius: 8px;
+.homePageBody {
+    height: 100%;
+    width: 100%;
+    /* background-image: url("https: //res.cloudinary.com/dozh44nc3/image/upload/v1659015898/spider-man-eyes_cuyfps.png"); */
+    /* background-size: cover; */
 }
