@@ -12,12 +12,12 @@ function App() {
     <div className="App">
 
       <Navigation />
-      
+
       <AppRoutes />
-      
+
       <Footer />
 
-    </div>
+    </div >
   )
 }
 

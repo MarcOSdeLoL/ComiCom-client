@@ -1,5 +1,5 @@
 import './ComicDetails.css'
-import { Card } from "react-bootstrap"
+import { Card, Container, Row, Col } from "react-bootstrap"
 import { useParams } from 'react-router-dom'
 import comicService from '../../../services/comic.services'
 import { useEffect, useState } from 'react'
@@ -23,29 +23,38 @@ const ComicDetails = () => {
     }, [])
 
     return (
-
-        <div>
-
+        <Container className='mt-3'>
+            <br />
+            <br />
             {
                 !comic ?
                     <LoadingButton /> :
-                    <>
-                        <Card className="bg-dark text-white 18rem">
-                            <Card.Img src={comic.cover} alt="Card image" />
-                            <Card.ImgOverlay>
+                    <Row className='comicDetails'>
+                        <Col md={{ offset: 1, span: 4 }}>
+                            <Card className=" 18rem">
+                                  <Card.Title className="text"> <h1>{comic.title} {comic.number}</h1></Card.Title>
+                                    <Card.Text>
+                                        <h2>
+                                            {comic.pages} pages
+                                            </h2>
+                                    </Card.Text>
 
-                                <Card.Title> <h1>{comic.title}{comic.number}</h1></Card.Title>
-                                <Card.Text>
-                                    {comic.pages} pages
-                                </Card.Text>
+                                    <Card.Text>{comic.description}</Card.Text>
+                               
+                            </Card>
+                        </Col>
+                        <Col md={{ offset: 1, span: 4 }}>
+                            <Card className=" 18rem">
+                                <Card.Img src={comic.cover} alt="Card image" />
+                                <Card.ImgOverlay>
 
-                                <Card.Text>Add year here</Card.Text>
-                            </Card.ImgOverlay>
-                        </Card>
-                    </>
+                                </Card.ImgOverlay>
+                            </Card>
+                        </Col>
+                    </Row>
             }
-
-        </div>
+            <br />
+        </Container >
     )
 }
 

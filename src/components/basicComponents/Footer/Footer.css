@@ -2,10 +2,16 @@
     background-color: #212429;
     color: white;
     font-size: .7em;
-    text-align: center;
     padding: 5px;
-    position: fixed;
     width: 100%;
-    bottom: 0;
-    left: 0;
+    margin-top: 50px;
+}
+
+.Footer h6 {
+    font-weight: lighter;
+}
+
+.rights {
+    color: grey;
+    font-style: italic;
 }

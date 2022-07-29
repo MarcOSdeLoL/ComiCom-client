@@ -6,3 +6,12 @@
     background-size: cover;
     background-position: center;
 }
+
+
+.EachUserDetails {
+    padding-top: 100px;
+}
+
+.EachUserDetails h1 {
+    padding-bottom: 50px;
+}

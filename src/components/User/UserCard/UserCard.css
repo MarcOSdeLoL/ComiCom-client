@@ -1,5 +1,6 @@
 .UserCard {
-    width: '18rem'
+    width: '18rem';
+    height: 100%;
 }
 
 .UserCard img {

@@ -31,7 +31,7 @@ class ComicService {
 
     getHostComics(user_id) {
         console.log('estoy en el servicioooo', user_id)
-        return this.api.get('/allHostComics', user_id)
+        return this.api.get(`/allHostComics/${user_id}`)
     }
 
     getMyComics() {

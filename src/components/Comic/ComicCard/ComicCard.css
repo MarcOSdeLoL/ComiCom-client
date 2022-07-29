@@ -18,3 +18,9 @@
 /* .ComicCard button {
     margin-right: 10px;
 } */
+
+.icons-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

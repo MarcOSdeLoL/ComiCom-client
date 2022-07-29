@@ -9,19 +9,20 @@ const UserList = ({ loadUsers, users }) => {
 
     return (
 
-        <Row>
+        <>
             {users.map(user => {
 
-                // WHAT DA HELL IS THIS KEY?
                 return (
 
-                    <Col md={3} key={user._id} >
+                    <Col className="userCardCol" md={3} key={user._id} >
                         <UserCard {...user} />
                     </Col>
                 )
-            })}
+            })
+            }
+        </>
 
-        </Row>
+
     )
 }
 

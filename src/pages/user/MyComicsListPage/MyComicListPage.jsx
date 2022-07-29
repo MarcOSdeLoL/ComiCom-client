@@ -26,9 +26,8 @@ const MyComicListPage = () => {
 
     return (
 
-        <Container>
+        <Container className="MyComicListPage">
 
-            <h1>My comics!</h1>
             <br />
             {myComics
                 ?

@@ -1,5 +1,5 @@
 import './EachUserDetails.css'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -41,44 +41,42 @@ const EachUserDetails = () => {
 
     return (
         <>
-            <Row>
-
+            <Row className="EachUserDetails">
                 <Col md={9}>
-                    <h1>{host?.username}'s comics</h1>
-
-                    <Row>
-
-                        {hostComics
-                            ?
-                            (hostComics.length
+                    <Container>
+                        <h1>{host?.username}'s comics</h1>
+                        <Row>
+                            {hostComics
                                 ?
-                                <>
-                                    {hostComics.map(comic => {
+                                (hostComics.length
+                                    ?
+                                    <>
+                                        {hostComics.map(comic => {
 
-                                        return (
-                                            <Col md={3} key={comic._id} >
-                                                <ComicCard {...comic} />
-                                            </Col>
-                                        )
-                                    })
-                                    }
-                                </>
+                                            return (
+                                                <Col md={3} key={comic._id} >
+                                                    <ComicCard {...comic} />
+                                                </Col>
+                                            )
+                                        })
+                                        }
+                                    </>
+                                    :
+                                    <h5>No comics</h5>
+                                )
                                 :
-                                <h5>No comics</h5>
-                            )
-                            :
-                            'MARCOS AQUI TIENES QUE PONER UN LOADER'
-                            //// LOADER
-                        }
+                                'MARCOS AQUI TIENES QUE PONER UN LOADER'
+                                //// LOADER
+                            }
 
-                    </Row>
+                        </Row>
+                    </Container>
 
 
                 </Col>
 
                 <Col md={3}>
                     <img className="otherUserAvatarPic" src={host?.avatar}></img>
-
                     <h2>{host?.username}</h2>
                     <hr />
                     <h5>{host?.description}</h5>
